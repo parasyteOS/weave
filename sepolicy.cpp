@@ -14,7 +14,7 @@ static void LOGW(const char *fmt, ...) {
 }
 
 // libsepol internal APIs
-__BEGIN_DECLS
+extern "C" {
 int policydb_index_decls(sepol_handle_t * handle, policydb_t * p);
 int avtab_hash(struct avtab_key *keyp, uint32_t mask);
 int type_set_expand(type_set_t * set, ebitmap_t * t, policydb_t * p, unsigned char alwaysexpand);
@@ -28,7 +28,7 @@ int context_to_string(
         const policydb_t * policydb,
         const context_struct_t * context,
         char **result, size_t * result_len);
-__END_DECLS
+}
 
 template <typename T>
 struct auto_cast_wrapper
