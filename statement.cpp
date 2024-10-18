@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#define LOGW(...) fprintf(stderr, __VA_ARGS__)
+
 const argument &all_xperm() {
     static argument arg;
     if (arg.first.empty())
@@ -105,13 +107,6 @@ Supported policy statements:
 )EOF", type_msg_1, type_msg_2, type_msg_3, type_msg_4,
 type_msg_5, type_msg_6, type_msg_7, type_msg_8, type_msg_9);
     exit(0);
-}
-
-static void LOGW(const char *fmt, ...) {
-  va_list argv;
-  va_start(argv, fmt);
-  fprintf(stderr, fmt, argv);
-  va_end(argv);
 }
 
 int vssprintf(char *dest, size_t size, const char *fmt, va_list ap) {

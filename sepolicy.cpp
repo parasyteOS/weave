@@ -3,15 +3,10 @@
 
 using namespace std;
 
+#define LOGW(...) fprintf(stderr, __VA_ARGS__)
+
 // Invert is adding rules for auditdeny; in other cases, invert is removing rules
 #define strip_av(effect, invert) ((effect == AVTAB_AUDITDENY) == !invert)
-
-static void LOGW(const char *fmt, ...) {
-  va_list argv;
-  va_start(argv, fmt);
-  fprintf(stderr, fmt, argv);
-  va_end(argv);
-}
 
 // libsepol internal APIs
 extern "C" {
